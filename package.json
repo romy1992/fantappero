@@ -1,0 +1,20 @@
+{
+  "name": "fantappero",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo MVP for FantAppero fantasy football platform.",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "install:all": "pnpm install",
+    "dev:web": "pnpm --filter @fantappero/web dev",
+    "dev:mobile": "pnpm --filter @fantappero/mobile dev",
+    "dev:backend": "cd backend && fastapi dev app/main.py",
+    "db:up": "docker compose up db -d",
+    "docker:up": "docker compose up --build",
+    "build": "pnpm -r --if-present build",
+    "typecheck": "pnpm -r --if-present typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}

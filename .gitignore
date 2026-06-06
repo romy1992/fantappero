@@ -1,0 +1,17 @@
+node_modules/
+dist/
+build/
+.expo/
+.turbo/
+.vite/
+
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+.env
+.env.local
+.DS_Store
+
+postgres_data/

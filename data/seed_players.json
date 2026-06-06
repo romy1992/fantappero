@@ -1,0 +1,16 @@
+[
+  {
+    "id": "player-1",
+    "firstName": "Marco",
+    "lastName": "Rossi",
+    "role": "goalkeeper",
+    "club": "Milano FC"
+  },
+  {
+    "id": "player-2",
+    "firstName": "Luca",
+    "lastName": "Bianchi",
+    "role": "forward",
+    "club": "Torino FC"
+  }
+]

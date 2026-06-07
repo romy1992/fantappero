@@ -1,26 +1,37 @@
-import { APP_NAME, DEFAULT_LINEUP_RULES } from "@fantappero/shared";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { AppLayout } from "./components/layout/AppLayout";
+import { AuthLayout } from "./components/layout/AuthLayout";
+import { LoginPage } from "./features/auth/LoginPage";
+import { RegisterPage } from "./features/auth/RegisterPage";
+import { CreateLeaguePage } from "./features/leagues/CreateLeaguePage";
+import { JoinLeaguePage } from "./features/leagues/JoinLeaguePage";
+import { LeagueDetailPage } from "./features/leagues/LeagueDetailPage";
+import { LineupPage } from "./features/lineups/LineupPage";
+import { PlayersPage } from "./features/players/PlayersPage";
+import { RosterPage } from "./features/rosters/RosterPage";
+import { StandingsPage } from "./features/standings/StandingsPage";
+import { TeamPage } from "./features/teams/TeamPage";
+import { DashboardPage } from "./routes/DashboardPage";
 
 export function App() {
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-12 text-white">
-      <section className="mx-auto max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-300">
-          MVP Monorepo
-        </p>
-        <h1 className="mt-4 text-5xl font-bold">{APP_NAME}</h1>
-        <p className="mt-6 text-lg text-slate-300">
-          Piattaforma fantasy evoluta per web e mobile, pronta per leghe,
-          draft semplificato e formazione a lock progressivo.
-        </p>
-        <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900 p-6">
-          <h2 className="text-xl font-semibold">Regole MVP</h2>
-          <p className="mt-2 text-slate-300">
-            Formazione base: {DEFAULT_LINEUP_RULES.formation},{" "}
-            {DEFAULT_LINEUP_RULES.starters} titolari e{" "}
-            {DEFAULT_LINEUP_RULES.bench} panchinari.
-          </p>
-        </div>
-      </section>
-    </main>
+    <Routes>
+      <Route element={<AuthLayout />}>
+        <Route element={<LoginPage />} path="/login" />
+        <Route element={<RegisterPage />} path="/register" />
+      </Route>
+      <Route element={<AppLayout />}>
+        <Route element={<DashboardPage />} index />
+        <Route element={<CreateLeaguePage />} path="leagues/new" />
+        <Route element={<JoinLeaguePage />} path="leagues/join" />
+        <Route element={<LeagueDetailPage />} path="leagues/:leagueId" />
+        <Route element={<TeamPage />} path="team" />
+        <Route element={<RosterPage />} path="roster" />
+        <Route element={<PlayersPage />} path="players" />
+        <Route element={<LineupPage />} path="lineup" />
+        <Route element={<StandingsPage />} path="standings" />
+      </Route>
+      <Route element={<Navigate replace to="/" />} path="*" />
+    </Routes>
   );
 }
